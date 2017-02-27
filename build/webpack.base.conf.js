@@ -1,9 +1,10 @@
 var path = require('path')
+var webpack = require('webpack')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -28,9 +29,20 @@ module.exports = {
       'vue$': 'vue/dist/vue.common.js',
       'src': resolve('src'),
       'assets': resolve('src/assets'),
-      'components': resolve('src/components')
+      'components': resolve('src/components'),
+      'jquery': resolve('src/js/jquery.js'),
     }
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      // 'moment':'moment',
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+
+      // 'iCheck':'iCheck'
+    })
+  ],
   module: {
     rules: [
       {
