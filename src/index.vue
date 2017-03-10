@@ -1,23 +1,17 @@
 <!-- index.vue -->
+
 <template>
   <div id="app" class="wrapper">
     <header class="main-header">
-
-      <!-- Logo -->
-      <a href="index2.html" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
+      <router-link to="/" class="logo">
         <span class="logo-mini">A</span>
-        <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>Admin</b>Lte</span>
-      </a>
-      
-      <!-- Header Navbar: style can be found in header.less -->
+         </router-link>
+
       <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
-        <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <li>
@@ -25,8 +19,6 @@
                 <span class="hidden-xs">您当前拥有0积分</span>
               </a>
             </li>
-            <!-- Messages: style can be found in dropdown.less-->
-            <!-- Notifications: style can be found in dropdown.less -->
             <li class="dropdown notifications-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-bell-o"></i>
@@ -44,8 +36,8 @@
                     </li>
                     <li>
                       <a href="#">
-                        <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                        page and may cause design problems
+                        <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page
+                        and may cause design problems
                       </a>
                     </li>
                     <li>
@@ -85,25 +77,7 @@
                     <small>注册日期：2016年9月14日</small>
                   </p>
                 </li>
-                <!-- Menu Body -->
-                <!-- <li class="user-body"> -->
-                  <!-- <div class="row"> -->
-                    <!-- <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div> -->
-                    <!-- <div class="col-xs-12 text-center">
-                      可用调休时长：10小时
-                    </div> -->
-                  <!-- </div> -->
-                  <!-- &lt;!&ndash; /.row &ndash;&gt; -->
-                <!-- </li> -->
-                <!-- Menu Footer-->
+
                 <li class="user-footer">
                   <div class="pull-left">
                     <a href="#" class="btn btn-default btn-flat">个人资料</a>
@@ -114,20 +88,15 @@
                 </li>
               </ul>
             </li>
-            <!-- Control Sidebar Toggle Button -->
-            <!-- <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li> -->
+
           </ul>
         </div>
-        
+
       </nav>
     </header>
-    <!-- Left side column. contains the logo and sidebar -->
+
     <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
-        <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
             <img src="./dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
@@ -137,28 +106,17 @@
             <a href="#"><i class="fa fa-circle text-success"></i>在线</a>
           </div>
         </div>
-        <!-- search form -->
-        <!--<form action="#" method="get" class="sidebar-form">-->
-          <!--<div class="input-group">-->
-            <!--<input type="text" name="q" class="form-control" placeholder="Search...">-->
-              <!--<span class="input-group-btn">-->
-                <!--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>-->
-                <!--</button>-->
-              <!--</span>-->
-          <!--</div>-->
-        <!--</form>-->
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
+
         <ul class="sidebar-menu">
           <li class="header">MAIN NAVIGATION</li>
           <li class="active">
-            <!--<router-link :to="{ path:'/' }">
+            <router-link :to="{ path:'/' }">
               <i class="glyphicon glyphicon-home"></i> <span>主页</span>
-             
-            </router-link>-->
+
+            </router-link>
             <!--<ul class="treeview-menu">-->
-              <!--<li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>-->
-              <!--<li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>-->
+            <!--<li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>-->
+            <!--<li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>-->
             <!--</ul>-->
           </li>
           <li class="treeview">
@@ -171,8 +129,12 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><router-link to="attendance"><i class="fa fa-circle-o"></i>我的考勤记录</router-link></li>
-              <li><router-link to="leave_record"><i class="fa fa-circle-o"></i>调休使用记录</router-link></li>
+              <li>
+                <router-link to="attendance"><i class="fa fa-circle-o"></i>我的考勤记录</router-link>
+              </li>
+              <li>
+                <router-link to="leave_record"><i class="fa fa-circle-o"></i>调休使用记录</router-link>
+              </li>
               <!--<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>-->
               <!--<li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>-->
               <!--<li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>-->
@@ -207,7 +169,7 @@
               <!--<li><router-link to="import_data"><i class="fa fa-circle-o"></i> 导入数据</a></li>-->
             </ul>
           </li>
-          
+
           <!-- <li class="header">LABELS</li>
           <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
           <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
@@ -417,31 +379,38 @@
 </template>
 <script>
   export default {
-  data() {
-    return {
-        
-    }
-  },
-  components: {
-    
-  },
-  mounted(){
-    var sUserAgent = navigator.userAgent.toLowerCase();
-    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-    var bIsAndroid = sUserAgent.match(/android/i) == "android";
-    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
-      alert(1);
-        $("a[href!='#']").attr("data-toggle","offcanvas");
-    }else{
-      // alert(2);
-    }
-  },
-  methods: {}
-}
+    data() {
+      return {
+
+      }
+    },
+    components: {
+
+    },
+    mounted() {
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+      var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+      var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+      var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+      var bIsAndroid = sUserAgent.match(/android/i) == "android";
+      var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+      var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+      if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+        alert(1);
+        $("a[href!='#']").attr("data-toggle", "offcanvas");
+      } else {
+        // alert(2);
+      }
+    },
+    methods: {}
+  }
+
 </script>
+
+<style>
+  #app {
+    background-color: #ecf0f5;
+  }
+</style>
