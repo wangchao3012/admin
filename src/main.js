@@ -14,7 +14,7 @@ import '!style-loader!css-loader!@/assets/AdminLTE/dist/css/AdminLTE.css'
 
 import $ from '@/assets/jquery-vendor.js'
 import 'bootstrap'
-import '@/plugins/slimScroll/jquery.slimscroll.min.js' 
+import '@/plugins/slimScroll/jquery.slimscroll.min.js'
 import '@/dist/js/app.js'
 // $(document).ajaxStart(function() { Pace.restart(); });
 /* eslint-disable no-new */
