@@ -6,7 +6,7 @@
       <router-link to="/" class="logo">
         <span class="logo-mini">A</span>
         <span class="logo-lg"><b>Admin</b>Lte</span>
-         </router-link>
+      </router-link>
 
       <nav class="navbar navbar-static-top">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -97,7 +97,7 @@
 
     <aside class="main-sidebar">
       <section class="sidebar">
-        <div class="user-panel">
+        <!--<div class="user-panel">
           <div class="pull-left image">
             <img src="./dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
@@ -105,75 +105,52 @@
             <p>张三</p>
             <a href="#"><i class="fa fa-circle text-success"></i>在线</a>
           </div>
-        </div>
+        </div>-->
 
         <ul class="sidebar-menu">
-          <li class="header">MAIN NAVIGATION</li>
-          <li class="active">
-            <router-link :to="{ path:'/' }">
-              <i class="glyphicon glyphicon-home"></i> <span>主页</span>
+          <li class="header"></li>
 
-            </router-link>
-            <!--<ul class="treeview-menu">-->
-            <!--<li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>-->
-            <!--<li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>-->
-            <!--</ul>-->
-          </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-files-o"></i>
-              <span>考勤管理</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-                <!-- <small class="label pull-right bg-green">new</small> -->
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li>
-                <router-link to="attendance"><i class="fa fa-circle-o"></i>我的考勤记录</router-link>
-              </li>
-              <li>
-                <router-link to="leave_record"><i class="fa fa-circle-o"></i>调休使用记录</router-link>
-              </li>
-              <!--<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>-->
-              <!--<li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>-->
-              <!--<li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>-->
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-th"></i> <span>加班管理</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-                <!-- <small class="label pull-right bg-green">new</small> -->
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <!--<li><router-link to="overtime_record"><i class="fa fa-circle-o"></i> 加班记录</a></li>
-              <li><router-link to="overtime_petitioner"><i class="fa fa-circle-o"></i> 加班申请</a></li>
-              <li><router-link to="overtime_pass"><i class="fa fa-circle-o"></i> 加班审批</a></li>-->
-              <!--<li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>-->
-              <!--<li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>-->
-              <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-pie-chart"></i> <span>数据管理</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-                <!-- <small class="label pull-right bg-green">new</small> -->
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <!--<li><router-link to="import_data"><i class="fa fa-circle-o"></i> 导入数据</a></li>-->
-            </ul>
-          </li>
+
 
           <!-- <li class="header">LABELS</li>
           <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
           <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
           <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
+          <!--class={{i==0?'active':'treeview'}}-->
+          <li v-bind:class="[{ active: i==0 }, 'treeview']" v-for='(m,i) in menu' class="treeview">
+            <router-link to="attendance"><i class="fa" v-bind:class="[m.icon]"></i><span>{{m.name}}</span>
+              <span v-if='m.menu' class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                 <!--<small class="label pull-right bg-green">new</small> -->
+              </span>
+            </router-link>
+            <ul v-if='m.menu' class="treeview-menu">
+              <li v-for='m1 in m.menu'>
+                <router-link to="attendance"><i class="fa" v-bind:class="[m1.icon]"></i><span>{{m1.name}}</span>
+                  <span v-if='m1.menu' class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i> 
+                   </span>
+                </router-link>
+
+                <ul v-if='m1.menu' class="treeview-menu">
+                  <li v-for='m2 in m1.menu'>
+                    <router-link to="attendance"><i class="fa" v-bind:class="[m2.icon]"></i><span>{{m2.name}}</span>
+                      <span v-if='m2.menu' class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </router-link>
+                    <ul v-if='m2.menu' class="treeview-menu">
+                      <li v-for='m3 in m2.menu'>
+                        <router-link to="attendance"><i class="fa" v-bind:class="[m3.icon]"></i><span>{{m3.name}}</span></router-link>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+
         </ul>
       </section>
       <!-- /.sidebar -->
@@ -381,12 +358,33 @@
   export default {
     data() {
       return {
-
+        menu: [{
+          name: '数据分析',
+          icon: 'fa-home'
+        }, {
+          name: '数据分析1',
+          icon: 'fa-area-chart',
+          menu: [
+            {
+              name: '用户画像1',
+              icon: 'fa-user'
+            }, {
+              name: '用户数据1',
+              icon: 'fa-user',
+              menu: [{
+                name: '数据统计1',
+                icon: 'fa-circle-o',
+              }, {
+                name: '数据统计12',
+                icon: 'fa-circle-o',
+              }]
+            }
+          ]
+        }
+        ]
       }
     },
-    components: {
 
-    },
     mounted() {
       var sUserAgent = navigator.userAgent.toLowerCase();
       var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
