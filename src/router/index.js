@@ -1,15 +1,53 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/components/home'
+import VueRouter from 'vue-router'
+import App from '@/App'
 
-Vue.use(Router)
+import Home from '@/page/home'
+import login from '@/page/login'
+import Index from '@/page/index' 
+import demo_table from '@/page/demo/table'
+import demo_echart from '@/page/demo/echart'
+import demo_modal from '@/page/demo/modal'
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    }
-  ]
-})
+
+Vue.use(VueRouter)
+
+
+const routes = [
+  {
+    path: '/login',
+    name: 'login',
+    component: login,
+
+  },
+  {
+    path: '/',
+    name: 'index',
+    component: Index,
+    children: [
+      {
+        path: '',
+        component: Home
+      },
+      {
+        path: '/demo/table',
+        component: demo_table
+      }
+      ,
+      {
+        path: '/demo/echart',
+        component: demo_echart,
+      },
+      {
+        path: '/demo/modal',
+        component: demo_modal,
+      }
+    ]
+  }
+
+]
+
+export default new VueRouter({
+  mode: 'history',
+  routes
+}) 
