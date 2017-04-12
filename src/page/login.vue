@@ -1,64 +1,70 @@
 <template>
-<div class="login-box"  >
-  <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
-
-    <form action="../../index2.html" method="post">
+  <div class="login">
+    <div class="y-list">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="text"
+               class="form-control"
+               placeholder="请输入用户名">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password"
+               class="form-control"
+               placeholder="请输入密码">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-12">
-            <button class="btn btn-primary btn-block"
-                @click='login'>
+          <button class="btn btn-primary btn-block"
+                  @click='login'>
             登录</button>
         </div>
-        
+  
       </div>
-    </form>
-
-    <div class="social-auth-links text-center">
-      <!--<p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>-->
- 
-
+  
     </div>
-    <!-- /.social-auth-links -->
-
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
-
   </div>
-  <!-- /.login-box-body -->
-</div>
 </template>
+<style>
+.login {
+  padding: 200px;
+  background-color: #3c8dbc;
+  /*rgba(0,0,0,.8);*/
+  height: 100%;
+}
+
+.y-list {
+  width: 400px;
+  margin: 0 auto;
+  border: solid 1px #333;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 5px;
+}
+</style>
 <script>
 export default {
-    // name: 'hello',
-    data() {
-        return {
-            msg: 'Welcome to Your Vue.js App'
-        }
-    },
-    mounted() {
-
-    },
-    methods: {
-        login() {
-            this.$router.push({ path: '/' })
-        }
+  // name: 'hello',
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js App',
+      par: {
+        userName: '',
+        password: ''
+      }
     }
+  },
+  mounted() {
+
+  },
+  methods: {
+    login() {
+      let self = this;
+      app.post(app.method.user_login, self.par, d => {
+        console.log('d::' + JSON.stringify(d))
+        // this.$router.push({ path: '/' })
+      })
+    }
+  }
 }
 </script>

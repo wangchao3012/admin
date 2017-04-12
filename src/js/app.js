@@ -36,15 +36,15 @@ var app = (function (document, undefined) {
     $.isStatusbarOffset = !1;
     $.getUrl = function (method) {
         return {
-            1: '1',
+            1: 'http://127.0.0.1:3000/',
             2: '2',
             3: ''
-        }[1] + method;
+        }[1];
     };
     $.method = {
-        user_login: 'api/user/login',
-        user_register: 'api/user/login/regist',
-        user_UpdateUserBase: 'api/user/UpdateUserBase',
+        user_login:'user.login',
+        user_register:'user.register',
+        user_UpdateUserBase:'user.UpdateUserBase',
     };
     $.reg = {
         password: /^(\w){6,18}$/,
@@ -64,7 +64,7 @@ var app = (function (document, undefined) {
 (function ($, jq) {
     $.post = function (method, data, successCallback, errorCallBack, ) {
 
-        var url = $.getUrl(method)
+        var url = $.getUrl()
         console.log('post11', method, url);
         jq.ajax({
             type: "POST",
