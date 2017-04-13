@@ -29,9 +29,11 @@ import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js'
 import app from '@/js/app.js'
 import '@/js/index.js'
 
-
+import store from '@/store/index'
+console.log('store:', store);
 new Vue({
     el: '#app',
+    store,
     router,
     render: h => h(App)
 })

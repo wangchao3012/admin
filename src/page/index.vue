@@ -1,5 +1,5 @@
 <template>
-  <div  class="wrapper">
+  <div class="wrapper">
     <header class="main-header">
       <router-link to="/"
                    class="logo">
@@ -118,9 +118,9 @@
                  v-bind:class="[m.icon]"></i><span>{{m.name}}</span>
               <span v-if='m.menu'
                     class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                     <!--<small class="label pull-right bg-green">new</small> -->
-                  </span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                       <!--<small class="label pull-right bg-green">new</small> -->
+                    </span>
             </router-link>
             <ul v-if='m.menu'
                 class="treeview-menu">
@@ -129,8 +129,8 @@
                      v-bind:class="[m1.icon]"></i><span>{{m1.name}}</span>
                   <span v-if='m1.menu'
                         class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i> 
-                       </span>
+                              <i class="fa fa-angle-left pull-right"></i> 
+                         </span>
                 </router-link>
   
                 <ul v-if='m1.menu'
@@ -140,8 +140,8 @@
                          v-bind:class="[m2.icon]"></i><span>{{m2.name}}</span>
                       <span v-if='m2.menu'
                             class="pull-right-container">
-                          <i class="fa fa-angle-left pull-right"></i>
-                        </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                          </span>
                     </router-link>
                     <ul v-if='m2.menu'
                         class="treeview-menu">
@@ -236,7 +236,8 @@ export default {
     //   console.log('data:', JSON.stringify(data));
 
     // })
-
+    // this.$store.state.test
+    // debugger
     // console.log('b',);
     // console.log('aa::', a.aaa());
 
