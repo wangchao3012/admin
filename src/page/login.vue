@@ -57,7 +57,8 @@ export default {
     },
     methods: {
         login() {
-            this.$router.push({ path: '/' })
+          app.post()
+            // this.$router.push({ path: '/' })
         }
     }
 }

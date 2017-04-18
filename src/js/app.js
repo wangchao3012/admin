@@ -24,7 +24,7 @@ var app = (function (document, undefined) {
     $.version = '1.5.0';
     $.welcomeVer = '1.5.0';
     $.serialNumber = '6.6.19 9:38';
-    $.appType = 3; //1-开发；2-测试；3-生产  
+    $.appType = 1; //1-开发；2-测试；3-生产  
     $.debug = true;
     $.upFile = '_doc/update/tm.wgt';
     $.appFile = '_doc/update/tm.apk';
@@ -36,10 +36,10 @@ var app = (function (document, undefined) {
     $.isStatusbarOffset = !1;
     $.getUrl = function (method) {
         return {
-            1: '1',
+            1: '127.0.0.1:3000',
             2: '2',
             3: ''
-        }[1] + method;
+        }[1];
     };
     $.method = {
         user_login: 'api/user/login',
