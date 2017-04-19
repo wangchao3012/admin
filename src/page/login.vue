@@ -4,12 +4,14 @@
       <div class="form-group has-feedback">
         <input type="text"
                class="form-control"
+               v-model="par.userName"
                placeholder="请输入用户名">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="password"
                class="form-control"
+               v-model="par.password"
                placeholder="请输入密码">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
@@ -49,8 +51,9 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       par: {
-        userName: '',
-        password: ''
+        userName: 'admin',
+        password: '111111',
+        type: 1
       }
     }
   },

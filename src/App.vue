@@ -14,7 +14,7 @@ export default {
   // },
   mounted() {
     // this.$store.state.test = '11'
-    debugger
+    // debugger
 
   },
   methods: {
