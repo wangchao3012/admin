@@ -12,10 +12,12 @@ export default {
   // components: {
 
   // },
+  created(){
+    app.User.getToken()||this.$router.push({ path: '/login' })
+  },
   mounted() {
     // this.$store.state.test = '11'
     // debugger
-
   },
   methods: {
     exit() {

@@ -169,7 +169,7 @@
 export default {
   data() {
     return {
-      user:app.Cache.getObject(app.Cache.key.user.toKeyName()),
+      user:app.User.get(),
       menu: [{
         name: '首页',
         icon: 'fa-home',
@@ -234,6 +234,7 @@ export default {
 
   mounted() {
     // debugger
+    let aa=app.Cache.getObject(app.Cache.key.user.toKeyName());
 //  this.user=app.Cache.getObject(app.Cache.key.user.toKeyName());
     // app.post('aa/bb', { aa: 11 }, function (data) {
     //   console.log('data:', JSON.stringify(data));

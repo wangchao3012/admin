@@ -509,11 +509,14 @@ var md5 = require('md5');
      */
     $.User = {
 
-        token_type: '',
-        UserId: "",
-        NickName: '',
-        MobileNum: '',
-        VTimes: '',
+        name: '',
+        userName: '',
+        oId: '',
+        token: '',
+        head: '',
+        email: '',
+        menu: [],
+        auth: [],
 
         set: function (u) {
             $.User.setToken(u.token);
@@ -523,7 +526,6 @@ var md5 = require('md5');
         },
         get: function () {
             var u = $.Cache.getObject($.Cache.key.user.toKeyName());
-
             return u || $.User;
         },
         setToken: function (token) {
