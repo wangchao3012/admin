@@ -5,6 +5,11 @@ import App from '@/App'
 import Home from '@/page/home'
 import login from '@/page/login'
 import Index from '@/page/index' 
+
+import user_list from '@/page/user/list' 
+import role_list from '@/page/role/list' 
+import menu_list from '@/page/menu/list' 
+
 import demo_table from '@/page/demo/table'
 import demo_echart from '@/page/demo/echart'
 import demo_modal from '@/page/demo/modal'
@@ -26,9 +31,17 @@ const routes = [
     component: Index,
     children: [
       {
-        path: '',
-        component: Home
+        path: 'user/list',
+        component: user_list
       },
+      {
+        path: 'role/list',
+        component: role_list
+      },
+      {
+        path: 'menu/list',
+        component: menu_list
+      }, 
       {
         path: '/demo/table',
         component: demo_table

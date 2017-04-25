@@ -65,7 +65,11 @@ export default {
       let self = this;
       app.post(app.method.user_login, self.par, d => {
         console.log('d::' + JSON.stringify(d))
-        // this.$router.push({ path: '/' })
+        
+         app.User.set(d); 
+         
+         
+        this.$router.push({ path: '/' })
       })
     }
   }

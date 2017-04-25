@@ -41,7 +41,7 @@
                                    type="checkbox" />
                         </td>
                         <td class="text-right y-item-index">
-                            {{(par.pageNo-1)*pageSize+i+1}}
+                            {{(pageNo-1)*pageSize+i+1}}
                         </td>
                         <td v-for="c in columns"
                             :class='c.class'>
@@ -67,14 +67,19 @@ export default {
             default: 10
         },
         parWhere: Object,
+        method:{
+            type: String,
+            default:''
+        }
     },
     data: function () {
         return {
             sortKey: '',
             sortOrder: '',
             check: [],
+            pageNo:1,
             par: {
-                pageNo: 1,
+                offset: 0,
                 pageSize: 10,
                 sort: '',
                 txt: ''
@@ -127,22 +132,33 @@ export default {
             var self = this;
             Object.assign(self.par, self.parWhere)
             console.log('par', JSON.stringify(self.par));
-            self.result.list = [];
-            for (var i = 0; i < self.par.pageSize; i++) {
-                let n = (self.par.pageNo - 1) * self.par.pageSize + i + 1;
-                self.result.list.push({
-                    id: n,
-                    name: '张三' + n,
-                    sex: '男' + n,
-                    age: n,
-                    remark: '这里是备注信息..................................................' + n,
-                });
-            }
-            self.result.total = 80;
+// debugger
+            self.par.offset=(self.pageNo-1)*self.par.pageSize;
+            app.post(app.method[self.method], self.par, d => {
+                
+                console.log('d111::' + JSON.stringify(d)) 
+                self.result.list =d.rows;
+                self.result.total=d.count;
+            })
+
+            // self.result.list = [];
+             
+            // for (var i = 0; i < self.par.pageSize; i++) {
+            //     let n = (self.par.pageNo - 1) * self.par.pageSize + i + 1;
+            //     self.result.list.push({
+            //         id: n,
+            //         name: '张三' + n,
+            //         sex: '男' + n,
+            //         age: n,
+            //         remark: '这里是备注信息..................................................' + n,
+            //     });
+            // }
+            // self.result.total = 80;
         },
         changePage(page) {
             var self = this;
             this.check = [];
+            self.pageNo=page.pageNo;
             Object.assign(self.par, page)
             self.load();
         },

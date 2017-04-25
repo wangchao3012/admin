@@ -72,7 +72,7 @@
                 <img src="../img/user2-160x160.jpg"
                      class="user-image"
                      alt="User Image">
-                <span class="hidden-xs">张三</span>
+                <span class="hidden-xs" v-text='user.name'></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
@@ -112,7 +112,7 @@
   
         <ul class="sidebar-menu">
           <li class="header"></li>
-          <li v-for='(m,i) in menu'
+          <li v-for='(m,i) in user.menu'
               :class="[{ active: i==0 }, 'treeview']">
             <router-link :to="m.to"><i class="fa"
                  v-bind:class="[m.icon]"></i><span>{{m.name}}</span>
@@ -169,6 +169,7 @@
 export default {
   data() {
     return {
+      user:app.Cache.getObject(app.Cache.key.user.toKeyName()),
       menu: [{
         name: '首页',
         icon: 'fa-home',
@@ -232,6 +233,8 @@ export default {
   },
 
   mounted() {
+    // debugger
+//  this.user=app.Cache.getObject(app.Cache.key.user.toKeyName());
     // app.post('aa/bb', { aa: 11 }, function (data) {
     //   console.log('data:', JSON.stringify(data));
 
@@ -260,6 +263,8 @@ export default {
   },
   methods: {
     exit() {
+      app.Cache.del(app.Cache.key.user.toKeyName());
+      app.Cache.del(app.Cache.key.token.toKeyName())
       this.$router.push({ path: '/login' })
     }
   }

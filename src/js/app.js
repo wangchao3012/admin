@@ -24,6 +24,7 @@ var app = (function (document, undefined) {
     $.method = {
         user_login: 'user.login',
         user_register: 'user.register',
+        user_list: 'user.list',
         user_UpdateUserBase: 'user.UpdateUserBase',
     };
     $.reg = {
@@ -59,7 +60,7 @@ var md5 = require('md5');
             success: function (res) {
                 console.log('res', res);
                 (res.sc == 0 && successCallback(res.d)) || (res.sc == -1 && (console.log(res.msg), !!errorCallBack && errorCallBack())) ||
-                    (res.sc == -2 && $.User.getToken() != "" && ($.User.delToken(), User.delOpenId(), console.log('登录失败')
+                    (res.sc == -2 && $.User.getToken() != "" && ($.Cache.del($.Cache.key.token.toKeyName()), console.log('登录失败')
                     )) || (res.sc < -3 && console.log('服务器繁忙，请稍后重试'));
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -83,7 +84,8 @@ var md5 = require('md5');
         var token = $.User.getToken();
         var cr = {};
         cr.sn = $.getSN();
-        cr.uid = $.User.getUserId();
+
+        cr.oid = $.User.getOpenId();
         if (token == '') {
             token = $.defaultToken;
             $.User.setToken(token);
@@ -157,36 +159,11 @@ var md5 = require('md5');
     $.Cache = {
         keyTime: 'keyTime',
         key: {
-            version: 'version',
-            upFileVer: 'upFileVer',
             user: 'user',
             sn: 'sn',
             token: 'token',
             userId: 'userId',
-            returnurl: 'returnurl',
-            cpageTitle: 'cpageTitle', //当前公用页标题
-            cpageUrl: 'cpageUrl', //当前公用页地址
-            isUpFile: 'isUpFile', //是否有更新文件
-            isRestartOpen: 'isRestartOpen',
-            selectWelcome: 'selectWelcome',
-            cindexData: 'cindexData',
-            cnewsData: 'cnewsData', //新闻第一个数据缓存
-            cclubData: 'cclubData', //新闻第一个数据缓存
-            cequestrianData: 'cequestrianData',
-            chooseFromPage: 'chooseFromPage',
-            chooseFromPageID: 'chooseFromPageID',
-            choosedClub: 'choosedClub',
-            choosedClubIsParent: 'choosedClubIsParent',
-            cOrderNo: 'cOrderNo',
-            //俱乐部
-            clubData: 'clubData',
-            //分会
-            chapterData: 'chapterData',
-            cOrderMoney: 'cOrderMoney',
-            headPhoto: 'headPhoto',
-            userPhoto1: 'userPhoto1',
-            userPhoto2: 'userPhoto2',
-            selectAddr: 'selectAddr',
+            openId: 'openId'
         },
         //初始化缓存
         init: function () {
@@ -539,8 +516,8 @@ var md5 = require('md5');
         VTimes: '',
 
         set: function (u) {
-            $.User.setToken(u.Token);
-            $.User.setUserID(u.UserID);
+            $.User.setToken(u.token);
+            $.User.setOpenId(u.oId);
 
             $.Cache.setObject($.Cache.key.user.toKeyName(), u);
         },
@@ -556,17 +533,11 @@ var md5 = require('md5');
             return $.Cache.getString($.Cache.key.token.toKeyName());
         },
 
-        setUserId: function (token) {
-            $.Cache.set($.Cache.key.userId.toKeyName(), token);
+        setOpenId: function (v) {
+            $.Cache.set($.Cache.key.openId.toKeyName(), v);
         },
-        getUserId: function () {
-            return $.Cache.getString($.Cache.key.userId.toKeyName())
-        },
-        setAccessToken: function (token) {
-            $.Cache.set($.Cache.key.access_token.toKeyName(), token);
-        },
-        getAccessToken: function () {
-            return $.Cache.getString($.Cache.key.access_token.toKeyName())
+        getOpenId: function () {
+            return $.Cache.getString($.Cache.key.openId.toKeyName())
         },
         clear: function () {
             $.Cache.del($.Cache.key.token.toKeyName());
