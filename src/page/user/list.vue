@@ -80,7 +80,7 @@ export default {
             method:'user_list',
             par: {
                 txt: '',
-                sex: '0',
+                sex: '-1',
                 date: ''
             },
             tableColumns: [{

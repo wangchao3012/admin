@@ -25,7 +25,8 @@ var app = (function (document, undefined) {
         user_login: 'user.login',
         user_register: 'user.register',
         user_list: 'user.list',
-        user_UpdateUserBase: 'user.UpdateUserBase',
+        role_list: 'role.list',
+        menu_list: 'menu.list',
     };
     $.reg = {
         password: /^(\w){6,18}$/,
@@ -113,38 +114,6 @@ var md5 = require('md5');
         cr.si = md5(content);
         return cr;
     };
-    // $.sign = function (data) {
-    //     var token = $.User.getToken();
-    //     var cr = {};
-    //     data.sn = $.getSN();
-    //     data.uid = $.User.getUserID();
-    //     if (token == '') {
-    //         token = $.defaultToken;
-    //         $.User.setToken(token);
-    //     }
-
-    //     // 排序key
-    //     var keyArr = [];
-    //     for (var item in data) {
-    //         keyArr.push(item);
-    //     }
-    //     keyArr.sort(function (a, b) {
-    //         return a.toLowerCase() > b.toLowerCase() ? 1 : -1
-    //     });
-    //     // 生成加密 
-    //     var content = token;
-    //     for (var i = 0; i < keyArr.length; i++) {
-    //         var key = keyArr[i];
-    //         var value = data[key];
-    //         cr[key] = value;
-    //         value != undefined && value != null && value !== '' && (content += key + value)
-    //     }
-    //     console.log('content', content)
-    //     var md5 = require('md5');
-    //     cr.si = md5(content);
-
-    //     return cr;
-    // };
 })(app, jQuery);
 /**
  * 缓存管理
